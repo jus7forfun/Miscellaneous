@@ -4,7 +4,7 @@
 // @namespace   BlackNullerNS
 // @include     file:///*/btsearch.html*
 // @include     http*://blacknuller.github.io/btsearch.html*
-// @version     1.6.9
+// @version     1.6.10
 // @grant	 GM_xmlhttpRequest
 // @grant	 GM_setValue
 // @grant	 GM_getValue
@@ -2121,10 +2121,10 @@ bt.addSource("Genesis_Fiction", function () {
             fiction: genf
         },
         onParse: {
-            row: "tr:has(a[href*='foreignfiction/get.php'])",
+            row: "tr:has(a[href*='foreignfiction/ads.php'])",
             sel: [
                 {text: "> td:eq(0), > td:eq(2)"},
-                {text: "a[href*='/get.php']:eq(0)", link: "a[href*='/get.php']:eq(0)", noblank: true}
+                {text: "a[href*='/ads.php']:eq(0)", link: "a[href*='/ads.php']:eq(0)", noblank: true}
             ]
         },
         icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABh0lEQVQ4jY2SoYvUQRiGP5bjwiGyiBhETIssDPx+M88DhxgMIodcMBhNBoNc8i8QDCKHwWAQMZjEICIGg+G4dEkOEcMhYhARk4gsIrLIWmZlXXfX+2DSzPvOM++8EQumlHIaaCJiadG5maNeVkfqCBgAW8CNnPO6enihuJRyXh2ODaYX8EvdA279I845n1K/q9tt254ALgC31d0qnDR6No3dV7/UA2/Vm+par9c7WM276ou6/yqldGAS+6j6YQ72UN1VH1eKj8A59e4Yuwu8nvfmKexBzjkDV4GXkVJaVrf3I1aHOef1iAjgnvom1Gv7FI9KKVdqVhfVIXAm1D31obqhPlW/zUHfjIho23ZV/aFuREUZjLEiIlJKy7WBm+NcgEcR0Wma5hjw6U941WAHeBARnVmlaprmSEQsqSu1C1sxWe22bVeBr+pn9X5t4cqUT6d+4buU0qFZ7esCl4AnwKC+8XnN5Xgp5Xq9pD+L8q+p37oG3FHf1wx+llLO/lc8a9Q+cHLe/m9CrdD4hthLEQAAAABJRU5ErkJggg=="
@@ -2157,7 +2157,7 @@ bt.addSource("Genesis_NonFiction", function () {
             link_prepend: "http://gen.lib.rus.ec/",
             sel: [
                 {text: "a[href*='book/']:eq(0), > td:eq(8)"},
-                {text: "> td:eq(7)", link: "a[href*='/get.php']:eq(0)", noblank: true}
+                {text: "> td:eq(7)", link: "a[href*='/ads.php']:eq(0)", noblank: true}
             ]
         },
         icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABkElEQVQ4jaWTvUtbYRSHXV5KpgydxEkcOohUkESNF6RaDIhoqYNDl4o6aNvBj6VIktdrFBFNU100BGnFKIIZxIA2JVkUvSZim8SP+JmIzvdfeDokm2Ju6PDjwBkeznkOp0TXs/xPSp5qZu4zSF+I+fUokViyeICuZ/nwNYCwOhA1DjpHVooHaIkUY4u/mFndY8i7YxwQ3o/z0blB6+cfvO3186Z7gfYvy3yaDHJ6fVEYkHnIUNU1h1BUhOLOVxVhk0hfyNgK679jiGoHJmWM8jYPrzo8mJVxfob2jDuIxJKkrm6JxE/Y2j1me/8vB4mz5wFaIoW9x0+pfZoXNhfC4kRYZD5OhFViH1h6foLhb5uIOomwSYRNRdS78sn1zE3uwis09vlz4urzU1hdiFoHok7y+v1cYUBgR6PynZfB2U0C2xqHqUuO03f8SV+TTJ8bk6jrWU5vblkLa/RPBHnZME4wemTsCiPeMObmyZwLizPnwyqJxB//xZOAYPSIspYpRIOKSVGpaPcw+n2ruF8wmn/uAT7c5N64IAAAAABJRU5ErkJggg=="
@@ -2412,62 +2412,6 @@ bt.addSource("KG", function () {
         },
 //		onFilter: bt.requireAllWords,
         icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACoElEQVQ4jeWSXUiTcRjF/5PCi0F00Wpgr1t7dR84F5MitQVddDFlOpTUGiRR4cqREKTJmLA1FssKTZ2hNslkaxJTl9MYKyd+ZMtZutShJI3elabvmm2jRSpPNyaJRHTduX7Oj/NwDkL/h8Lh8B6dVtsgl8u7xsbGcv/J7PF4dspkMg+VSoX4+HhISEgAuVzu9ng8BX/zUkiS5CkUCheGYUCn04FCoYBAIFjHcRxEoqNrDoejdPNarVbHTU9Oik3t7VUqpdKWm5P7KTU1FXAcBwaDATQaDdKPpBORSIQWCoWY0Wh0XygU2o0QQmhubk6Sn5f3gcPhAJvDBhaLBUwmE5hMJmAYBomMROByuaDX643bcvb09FTIZLJZoVAIPB4P+Hw+sFgswDAMMAwDPAmH5ORkYLPZ6/Pz84e2AcRi8deUlBRIS0sDiUSyrFKpeo+JRKt8Ph8yMzPWCgsLvUqlstPn8x3v6rDUkCTJIwhC7JuaylGr1XEoKysrJpVKCYfDcTkYDO5CCCGn06kymUx3zWazESFE6evurnvS2alpa22ubze2ND1oaWoJBAIHEUII9dntOoIgkn4likQiNIPB0GW1WnUWi6WuvrbWVHzq5GdD7Z2nVou5dXRo6Nq3YHA/Qoiy5ZXFxUWqy+XasdG9TFlZOSqVZH8/V3zGv7CwcHgDvtfneyvp7bGVT3u9W3cw7naXB/z+jMGB55eqKsr788UnfjQ3NjwkSZL7p50ghBB6/MikL5NfcJ89XfClrOT8uyulJVPGe4aOaq1mcNjlkndotc77Ot0zb//AzfcTE0Xh5WV2LBZL3ARkCgWrt29ct0WXlui/41dWVg68evni6uuRkbJGjWa439ja9nF2tmjcbtfZqm+98c/MZNdcVLh+As9+Owd6H2u5AAAAAElFTkSuQmCC"
-    };
-});
-
-bt.addSource("Kickass", function () {
-    var q = "https://kat.cr/usearch/{query}";
-
-    return {
-        url: {
-            all: q + "/?rss=1",
-            movies: q + " category:movies/?rss=1",
-            movies_1080: q + " 1080p category:movies/?rss=1",
-            movies_720: q + " 720p category:movies/?rss=1",
-            movies_bluray: q + " 1080p AVC OR VC-1 OR VC1 OR BluRay OR Blu-ray OR COMPLETE -remux -x264 category:movies/?rss=1",
-            movies_remux: q + " remux category:movies/?rss=1",
-            movies_dvd: q + " NTSC OR PAL OR DVD -DVDrip -DVDScr -HDRip -BDRip -x264 -xvid -divx -\"dvd rip\" -720p -1080p -1080i -avi -mkv -HD category:movies/?rss=1",
-            music: q + " category:music/?rss=1",
-            music_flac: q + " category:lossless/?rss=1",
-            docs: q + " category:documentary/?rss=1",
-            tv: q + " category:tv/?rss=1",
-            mvids: [q + " category:music-videos/?rss=1", q + " category:concerts/?rss=1"],
-            elearning: q + " category:books/?rss=1",
-            mags: q + " category:magazines/?rss=1",
-            ebooks: q + " -CBR -CBZ -MP3 -audiobook -\"audio book\" category:books/?rss=1",
-            abooks: q + " category:audio-books/?rss=1",
-            fiction: q + " category:fiction/?rss=1",
-            comics: q + " category:comics/?rss=1",
-            apps_win: q + " category:windows/?rss=1",
-            games_pc: q + " category:pc-games/?rss=1",
-            xxx: q + " category:xxx/?rss=1"
-        },
-        onValidate: function(response){
-            response.context.searchUrl = response.finalUrl.replace("/?rss=1", "");
-            return true;
-        },
-        onParse: {
-            row: "item",
-            sel: [
-                {
-                    text: "title",
-                    link: "guid"
-                },
-                {
-                    text: "torrent\\:seeds"
-                },
-                {
-                    text: function(context){
-                        return bt.humanizeSize(context.children("torrent\\:contentLength").first().text());
-                    },
-                    link: function(context){
-                        return context.children("enclosure").first().attr("url");
-                    },
-                    noblank: true
-                }
-            ]
-        },
-        icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACP0lEQVQ4jY2S30uTYRTHn7/Bi4JwERgRWELJnMGYm6Gjd5JkuhzOrTVrbQOHTR1FM40aaxPWcJUr57aLtjFsYpQwsknSD6grqcxhJQkmOrIaQ520fbtY73i3NeoLn4vnfM85D+dwCPkjiYSz87al7adWIeikY73aer/bLt9kxvTqOo+l7+QiyZexi3oeDugQDujgtEoT3iHFNv0OB3Tw2OXJgPNcin5rT/MN2eIWYXlJ8K4yPXlfi//F0ndiOdtAJeUaHnpVyGfp40sAwPfYYoEXcp1Fi7C8JDOXqjYy7lJi3KXEhFuFmUdmTE9cRXIrAQB4/2YMtM9EJmZLCSGEGLS174JOGYJOGSb9PSimV1O3QOcFnTJ0tFVdy2xbXTPnc0jgc0gQGlXj9fQ9rC7PZQsX52fwbe0zHvu6Qef5HBKcaWWbCSGEaOSciPdmM5h8+vAMAJCIx5Dv0UiOH8iMIG2q6HdZG8Hk65fZzO/RF8j3XNZG3DE1QHikNLPEel4Za2hAiGETlWVtZQEAMD/7BMMmCg9GO3P8blX1Ss4hadoPRR0DdaCJvn0KAEinU9jciCP+YxVMX9ywvz+ngUiwu/KGgZu2GfmwGfnw2NuxndwAAKzHluB3ngftXeg4vF5wyoQQcoraOzJ4kQuakcFWjLn1sF0WZGNXdFUpisfi/bUBIYSIRWUhUw8H5t7qAi5pKn+JeKVNRYtpUTUsRZfy4NZ1PRs0iuZ9Czz2LtY/i5k6xmfpxdSeyFHOjopiOb8BYYfsxcx4u9YAAAAASUVORK5CYII="
     };
 });
 
@@ -2767,11 +2711,11 @@ bt.addSource("PS", function () {
 });
 
 bt.addSource("PTP", function () {
-    var ptpMovies = "https://tls.passthepopcorn.me/torrents.php?action=advanced&filter_cat[1]=1&filter_cat[2]=1&filter_cat[3]=1&order_by=relevance&grouping=1&searchstr={query}";
+    var ptpMovies = "https://passthepopcorn.me/torrents.php?action=advanced&filter_cat[1]=1&filter_cat[2]=1&filter_cat[3]=1&order_by=relevance&grouping=1&searchstr={query}";
 
     return {
         url: {
-            all: "https://tls.passthepopcorn.me/torrents.php?action=basic&order_by=relevance&grouping=1&searchstr={query}",
+            all: "https://passthepopcorn.me/torrents.php?action=basic&order_by=relevance&grouping=1&searchstr={query}",
             movies: ptpMovies,
 //			movies_hd: ptpMovies + "&resolution=anyhd",
             movies_dvd: ptpMovies + "&format[]=DVD5&format[]=DVD9&grouping=0",
@@ -2780,8 +2724,8 @@ bt.addSource("PTP", function () {
             movies_720: ptpMovies + "&resolution=720p",
             movies_1080: ptpMovies + "&resolution=anyhd",
             docs: ptpMovies + "&taglist=documentary",
-            mvids: "https://tls.passthepopcorn.me/torrents.php?action=advanced&order_by=relevance&filter_cat[5]=1&searchstr={query}",
-            tv: "https://tls.passthepopcorn.me/torrents.php?action=advanced&order_by=relevance&filter_cat[3]=1&searchstr={query}"
+            mvids: "https://passthepopcorn.me/torrents.php?action=advanced&order_by=relevance&filter_cat[5]=1&searchstr={query}",
+            tv: "https://passthepopcorn.me/torrents.php?action=advanced&order_by=relevance&filter_cat[3]=1&searchstr={query}"
         },
         onPrepareQuery: [bt.extractGazelleYear, bt.extractGazelleResolution],
         onParse: function (response) {
@@ -2843,7 +2787,7 @@ bt.addSource("PTP", function () {
             var groupTable, groupTableHTML, torrent, tr;
 
             for (var i = 0, ml = movies.length; i < ml; i++) {
-                tr = '<tr><td><h4 class="torrent-group"><a href="https://tls.passthepopcorn.me/torrents.php?id=' + movies[i].GroupId + '" target="_blank">' + movies[i].Title + '</a> [' + movies[i].Year + ']</a></td></tr>';
+                tr = '<tr><td><h4 class="torrent-group"><a href="https://passthepopcorn.me/torrents.php?id=' + movies[i].GroupId + '" target="_blank">' + movies[i].Title + '</a> [' + movies[i].Year + ']</a></td></tr>';
 
                 if (movies[i].Cover) {
                     tr = $(tr);
@@ -2869,9 +2813,9 @@ bt.addSource("PTP", function () {
                         var title = bt.span.clone().html(torrent.Title);
                         var a = title.children('a').first();
                         a.attr("target", "_blank");
-                        a.attr("href", "https://tls.passthepopcorn.me/" + a.attr("href"));
+                        a.attr("href", "https://passthepopcorn.me/" + a.attr("href"));
 
-                        groupTableHTML += '<tr><td>' + title.html() + '</td><td>' + torrent.Seeders + '</td><td><a href="https://tls.passthepopcorn.me/torrents.php?action=download&id=' + torrent.TorrentId + '">' + torrent.Size + '</a></td></tr>';
+                        groupTableHTML += '<tr><td>' + title.html() + '</td><td>' + torrent.Seeders + '</td><td><a href="https://passthepopcorn.me/torrents.php?action=download&id=' + torrent.TorrentId + '">' + torrent.Size + '</a></td></tr>';
                     }
                 }
                 groupTable.html(groupTableHTML);
@@ -3552,7 +3496,7 @@ bt.addSource("TorViet", function () {
 });
 
 bt.addSource("TPB", function () {
-    var q = "https://thepiratebay.se/search/{query}";
+    var q = "https://thepiratebay.org/search/{query}";
 
     return {
         url: {
@@ -3580,7 +3524,7 @@ bt.addSource("TPB", function () {
         },
         onParse: {
             row: "#searchResult > tbody > tr",
-            link_prepend: "https://thepiratebay.se",
+            link_prepend: "https://thepiratebay.org",
             sel: [
                 {text: "a[href*='/torrent/']:eq(0)"},
                 {text: "> td:eq(-2)"},
@@ -3730,23 +3674,23 @@ bt.addSource("Vimeo", function () {
     };
 });
 
-bt.addSource("WCD", function () {
-    var wcd = "https://what.cd/ajax.php?action=browse&searchstr={query}";
+bt.addSource("PTH", function () {
+    var pth = "https://passtheheadphones.me/ajax.php?action=browse&searchstr={query}";
 
     return {
-        website: "https://what.cd/",
+        website: "https://passtheheadphones.me/",
         url: {
-            all: wcd,
-            music: wcd + "&filter_cat[1]=1",
-            music_flac: wcd + "&filter_cat[1]=1&format=FLAC",
-            //		music_mp3: wcd + "&filter_cat[1]=1&format=AAC|MP3",
-            elearning: wcd + "&filter_cat[3]=1&filter_cat[4]=1&filter_cat[5]=1&filter_cat[7]=1",
-            mags: wcd + "&filter_cat[3]=1",
-            ebooks: wcd + "&filter_cat[3]=1",
-            fiction: wcd + "&filter_cat[3]=1",
-            abooks: wcd + "&filter_cat[4]=1",
-            comics: wcd + "&filter_cat[7]=1",
-            apps_win: wcd + "&filter_cat[2]=1"
+            all: pth,
+            music: pth + "&filter_cat[1]=1",
+            music_flac: pth + "&filter_cat[1]=1&format=FLAC",
+            //		music_mp3: pth + "&filter_cat[1]=1&format=AAC|MP3",
+            elearning: pth + "&filter_cat[3]=1&filter_cat[4]=1&filter_cat[5]=1&filter_cat[7]=1",
+            mags: pth + "&filter_cat[3]=1",
+            ebooks: pth + "&filter_cat[3]=1",
+            fiction: pth + "&filter_cat[3]=1",
+            abooks: pth + "&filter_cat[4]=1",
+            comics: pth + "&filter_cat[7]=1",
+            apps_win: pth + "&filter_cat[2]=1"
         },
         onPrepareQuery: bt.extractGazelleYear,
         onParse: function (response) {
@@ -3790,12 +3734,12 @@ bt.addSource("WCD", function () {
             for (var i = 0, l = data.length; i < l; i++) {
 				ed = ""; media = "";
                 group = data[i];
-                link = "https://what.cd/torrents.php?id=" + group.groupId;
+                link = "https://passtheheadphones.me/torrents.php?id=" + group.groupId;
 
                 if ("torrents" in group) {
                     artist = (group.artist === 'Various Artists')
                         ? 'Various Artists'
-                        : bt.ab.clone().attr("href", "https://what.cd/artist.php?id=" + group.torrents[0].artists[0].id).html(group.artist);
+                        : bt.ab.clone().attr("href", "https://passtheheadphones.me/artist.php?id=" + group.torrents[0].artists[0].id).html(group.artist);
 
                     tr = torrentGroupHeader.clone();
                     tr[0].firstChild.setAttribute("colspan", "3");
@@ -3825,7 +3769,7 @@ bt.addSource("WCD", function () {
                         score = torrent.hasLog ? ' / Log (' + torrent.logScore + '%)' : '';
                         cue = torrent.hasCue ? ' / Cue' : '';
 
-                        groupTableHTML += '<tr><td><a href="https://what.cd/torrents.php?torrentid=' + torrent.torrentId + '" target="_blank">' + torrent.format + ' / ' + torrent.encoding + score + cue + '</a>' + (torrent.isFreeleech ? ' <span class="label label-success">Freeleech</span>' : '') + '</td><td>' + torrent.seeders + '</td><td><a href="https://what.cd/torrents.php?action=download&id=' + torrent.torrentId + '">' + bt.humanizeSize(torrent.size) + '</a></td></tr>';
+                        groupTableHTML += '<tr><td><a href="https://passtheheadphones.me/torrents.php?torrentid=' + torrent.torrentId + '" target="_blank">' + torrent.format + ' / ' + torrent.encoding + score + cue + '</a>' + (torrent.isFreeleech ? ' <span class="label label-success">Freeleech</span>' : '') + '</td><td>' + torrent.seeders + '</td><td><a href="https://passtheheadphones.me/torrents.php?action=download&id=' + torrent.torrentId + '">' + bt.humanizeSize(torrent.size) + '</a></td></tr>';
                     }
 
                     groupTable = bt.table.clone()
@@ -3837,11 +3781,11 @@ bt.addSource("WCD", function () {
 
                     table.append(tr, torRow);
                 } else {
-                    table.append('<tr><td><a href="' + link + '" target="_blank">' + group.groupName + '</a></td><td>' + group.seeders + '</td><td><a href="https://what.cd/torrents.php?action=download&id=' + group.torrentId + '">' + bt.humanizeSize(group.size) + '</a></td></tr>');
+                    table.append('<tr><td><a href="' + link + '" target="_blank">' + group.groupName + '</a></td><td>' + group.seeders + '</td><td><a href="https://passtheheadphones.me/torrents.php?action=download&id=' + group.torrentId + '">' + bt.humanizeSize(group.size) + '</a></td></tr>');
                 }
             }
         },
-        icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA10lEQVQ4je2SwarDIBRE8//f4kJXyU6SLwghCjE0Fl8a66sR9Aemq4YaF+32wRuYzR3u4Q7cqvrXIUopCCGZX9l5TilFsdx2LR6/D8QYEWMsACklpJTgvUfXdTmEEIJt2+D9fvgM2ENACDtCCLi7e5ZXhBBYa2Gt/VjBOQfnXAkwxsCYH3DO835v4pxjXVfcbmsJWJYLlsvy8QKtNfRVlwAxCkzTdPgMUGrGrGYoNUNKkQMYY6jrGn3fQ4gRoxAFQEoJKSWGYUDTNGCM5VUZY1//QbH8t/UEwLRIVSICXlgAAAAASUVORK5CYII="
+        icon: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAA1VBMVEVHcEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABZAAD1AABNTmRTVGc5OT0LCw7z8v8lJTKLi5Tf3+3///8BAQQyM0WAgIbU1OrAwt7k5PR7e4CusNNWAADDxOLn5/snJysyMjZsbH7n5/x4eISHh5IaGiGKipxdXWwSEhcgICnT1POTlaeQkrRNTmFISWA+P0ywstVqanU9PUDR0vGIiao9PUotLj1ycnp2dn3h4fiwstnepRfGAAAAFHRSTlMA+9rfnjDQgJn1PX1fNSzEbnMESSz0WTgAAAChSURBVHhenY9FEsNADAQVM4VlZgcdZmb6/5OyazsfSB+kma7SQUCpcEypxHA8FEiOH4Rh4DtS0UfubI04n7o2R3vZGdiYMZysFCKqizEWLLcCEbiJ8Mc1aoDi7WjUdTpvjybU4iPthtEn6x7XQcT92c7F5WmhCOrh1HrlJ91Oaqogmj0iCFS0LfEfoXmfdyKwiKyQuKmnAUgyytnjPAkSfAG0KBdDpKBsCwAAAABJRU5ErkJggg=="
     };
 });
 
