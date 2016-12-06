@@ -4,7 +4,7 @@
 // @namespace   BlackNullerNS
 // @include     file:///*/btsearch.html*
 // @include     http*://blacknuller.github.io/btsearch.html*
-// @version     1.6.10
+// @version     1.6.11
 // @grant	 GM_xmlhttpRequest
 // @grant	 GM_setValue
 // @grant	 GM_getValue
